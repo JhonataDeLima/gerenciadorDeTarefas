@@ -8,6 +8,7 @@ class Task{
     public $creat_at;
     public $finish_at;
     public $status;
+    public $priority;
     public $user_id;
 
     public function __construct(){

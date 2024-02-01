@@ -15,24 +15,6 @@ $taskId = filter_input(INPUT_GET, 'id');
 $taskDao = new TaskDaoMysql($pdo);
 $task = $taskDao->findTaskById($taskId);
 
-    if(!empty($task) && $task['status'] != 'concluido'){
-
-        $t = new Task();
-        $t->id = $task['id'];
-        $t->title = $task['title'];
-        $t->description = $task['description'];
-        $t->status = 'concluido';
-        $t->priority = $task['priority'];
-        $t->finish_at = date('Y-m-d H:i:s');
-        $t->creat_at = $task['creat_at'];
-        $t->user_id = $task['user_id'];        
-
-        $taskDao->updateTask($t);
-
-        header("Location: $base/index.php");
-        exit;
-    }
-
     
     if(!empty($task) && $task['status'] != 'concluido' && $task['status'] != 'andamento'){
 
@@ -51,6 +33,7 @@ $task = $taskDao->findTaskById($taskId);
         header("Location: $base/index.php");
         exit;
     }
+    
     if(!empty($task) && $task['status'] != 'concluido' && $task['status'] != 'pendente'){
 
         $t = new Task();

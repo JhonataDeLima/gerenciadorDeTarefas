@@ -6,6 +6,7 @@ require 'dao/TaskDaoMysql.php';
 
 $title = filter_input(INPUT_POST, 'title');
 $description = filter_input(INPUT_POST, 'description');
+$priority = filter_input(INPUT_POST, 'priority');
 
 $auth = new Auth($pdo, $base);
 $user = $auth->checkToken();
@@ -18,6 +19,7 @@ if($title && $description){
   $task->title = $title;
   $task->description = $description;
   $task->user_id = $user->id;
+  $task->priority = $priority;
   
   $taskDao->insert($task);
   

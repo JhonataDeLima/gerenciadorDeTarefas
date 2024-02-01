@@ -25,14 +25,15 @@ class TaskDaoMysql implements taskDao {
     public function insert(Task $t){
 
         $sql = $this->pdo->prepare('INSERT INTO tasks (
-            title, description, status, user_id, creat_at
+            title, description, status, priority, user_id, creat_at
             ) VALUES (
-            :title, :description, :status, :user_id, :creat_at
+            :title, :description, :status, :priority, :user_id, :creat_at
             )');
 
         $sql->bindValue(':title', $t->title);
         $sql->bindValue(':description', $t->description);
         $sql->bindValue(':status', $t->status); 
+        $sql->bindValue(':priority', $t->priority); 
         $sql->bindValue(':user_id', $t->user_id);
         $sql->bindValue(':creat_at', $t->creat_at);
         $sql->execute();
@@ -63,6 +64,7 @@ class TaskDaoMysql implements taskDao {
             title = :title,
             description = :description,
             status = :status,
+            priority = :priority,
             creat_at = :creat_at,
             finish_at = :finish_at,
             user_id = :user_id
@@ -73,6 +75,7 @@ class TaskDaoMysql implements taskDao {
         $sql->bindValue(':title', $t->title);
         $sql->bindValue(':description', $t->description);
         $sql->bindValue(':status', $t->status); 
+        $sql->bindValue(':priority', $t->priority); 
         $sql->bindValue(':user_id', $t->user_id);
         $sql->bindValue(':creat_at', $t->creat_at);
         $sql->bindValue(':finish_at', $t->finish_at);

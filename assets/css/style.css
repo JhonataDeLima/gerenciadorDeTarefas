@@ -36,7 +36,27 @@ body{
     text-align:center;
 }
 
-form {
+.formTask{
+    color: #FFF;
+    border-radius:10px;
+    width:400;
+    padding:10px;
+    margin:10px;
+    background-color: 383838;
+}
+
+.formTask
+label {
+  display: block;
+  padding: 10px;
+  text-align: right;
+}
+.formTask
+input {
+  display: inline-block;
+}
+
+form1{
     max-width:400px;
     margin: auto;
     background-color: #FFF;
@@ -63,9 +83,7 @@ form {
 }
 
 
-table{
-    width:100%;
-}
+
 
 .coluns{
     width:100%;
@@ -86,6 +104,10 @@ table{
     height:35px;
 }
 
+#new{
+    color:#9E8C61;
+    background-color:#F7DF5A;
+}
 #regular{
     background-color:#6CAFCE;
 }
@@ -104,14 +126,28 @@ table{
 
 
 
-.regular{
+.tasks{
     text-align:left;
-    border-left:4px solid #6CAFCE;
     border-radius:5px;
     margin:auto;
     margin:10px;
     padding:5px;
     background-color:#FFFFFF;
+}
+#tasksRegular{
+    border-left:5px solid #6CAFCE;
+}
+#tasksImportante{
+    border-left:5px solid #F3A361; 
+}
+#tasksUrgente{
+    border-left:5px solid #EB6781;
+}
+#tasksAndamento{
+    border-left:5px solid #6ABEAF;
+}
+#tasksConcluido{
+    border-left:5px solid #7DBF6D;
 }
 
 .task{
@@ -134,8 +170,8 @@ table{
 .date p{
     margin:1px;
     border-radius:5px;
-    height: auto;
-    width: auto; 
+    height:auto;
+    width:auto; 
 }
 
 #dateStart{
