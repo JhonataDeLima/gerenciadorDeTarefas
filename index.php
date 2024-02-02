@@ -1,23 +1,23 @@
 <?php
-require "config.php";
-require "models/Auth.php";
-require 'partials/head.php';
-require 'dao/TaskDaoMysql.php';
+require_once "config.php";
+require_once "models/Auth.php";
+require_once "partials/head.php";
+require_once "dao/TaskDaoMysql.php";
 
 $auth = new Auth($pdo, $base);
 $user = $auth->checkToken();
 
 $taskDao = new TaskDaoMysql($pdo);
 $tasks = $taskDao->select($user->id);
-
+$name = explode(" ",$user->name);
 ?>
 
+<!--<div class="welcome"> <a href="<?=$base;?>/logout.php"><img title="Sair" src="<?=$base;?>/assets/img/sair.png"/></a></div>-->
 <div class="home">
-
 
     <div class="coluns">
         <div class="action" id="new"><div class="t"><h3>NOVA TAREFA</h3></div></div>
-
+    
         <div class="formTask">
             <form method="POST" action="<?=$base;?>/task_add.php">
                 <label>Titulo: <input type="text" name="title" /></label></br>
@@ -36,6 +36,9 @@ $tasks = $taskDao->select($user->id);
                 <input type="submit" value="Adicionar" />
             </form>
         </div>
+        <div class="welcome"> <a href="<?=$base;?>/logout.php"><img title="Sair" src="<?=$base;?>/assets/img/sair.png"/></a></div>
+        
+        
     </div>
 
 
@@ -235,4 +238,4 @@ $tasks = $taskDao->select($user->id);
 
 </div>
 
-<?php require 'partials/footer.php'; ?>
+<?php require_once 'partials/footer.php'; ?>
