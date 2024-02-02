@@ -162,9 +162,22 @@ form1{
     height:25px;
 }
 
+.priority{
+ display:flex;
+
+}
+.priority p{
+    padding:2px;
+    color:fff;
+    background-color:383838;
+    margin:1px;
+    border-radius:5px;
+    height:auto;
+    width:auto; 
+}
+
 .date{
     display: flex;
-    text
 }
 
 .date p{

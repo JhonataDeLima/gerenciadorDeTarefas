@@ -98,4 +98,18 @@ class Auth {
         $_SESSION['token'] = $token;
 
     }
+
+    //CONVERTE CONVERTE DATE_HORA PARA PADRÃO BR
+    public static function dateTimeConverter($dateTime){
+        if($dateTime){
+            list($date, $hour) = explode(" ", $dateTime);
+            $date = explode("-", $date);
+            $date = $date[2]."/".$date[1]."/".$date[0];
+           
+            return array($date, $hour); 
+        }
+            
+            return array(' ');
+        
+    }   
 }

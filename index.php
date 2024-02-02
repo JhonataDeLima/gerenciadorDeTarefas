@@ -43,8 +43,14 @@ $tasks = $taskDao->select($user->id);
         <div class="action" id="regular"><div class="t"><h3>REGULAR</h3></div></div>
 
         <?php foreach ($tasks as $item):?>
-            <?php $creat_at = $item['creat_at'];
-                 $date = implode('/', array_reverse(explode('-', $creat_at)));?>
+            <?php 
+                //DATA DE CRIAÇÃO 
+                $dateC = Auth::dateTimeConverter($item['creat_at']);
+                //DATA DE CONCLUSÃO
+                $dateF = Auth::dateTimeConverter($item['finish_at']);
+                 ?>
+
+                 
             <?php if($item['priority'] != 'regular') continue;?>
             <?php if($item['status'] == 'concluido' || $item['status'] == 'andamento' ) continue;?>
             <div class="tasks" id="tasksRegular">
@@ -61,8 +67,8 @@ $tasks = $taskDao->select($user->id);
                             <a href="<?=$base;?>/task_delet.php?id=<?=$item['id'];?>"><img title="apagar" src="<?=$base;?>/assets/img/apagar.png"/></a>
                         </div>
                         <div class="taskDates">
-                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$item['creat_at'];?></p></div>
-                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$item['finish_at'];?></p></div>
+                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$dateC[0];?></p></div>
+                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$dateF[0];?></p></div>
                         </div> 
                     </div>
                 </div> 
@@ -76,8 +82,13 @@ $tasks = $taskDao->select($user->id);
         <div class="action" id="importante"><h3>IMPORTANTE</h3></div>
 
         <?php foreach ($tasks as $item):?>
-            <?php $creat_at = $item['creat_at'];
-                 $date = implode('/', array_reverse(explode('-', $creat_at)));?>
+            <?php 
+                //DATA DE CRIAÇÃO 
+                $dateC = Auth::dateTimeConverter($item['creat_at']);
+                //DATA DE CONCLUSÃO
+                $dateF = Auth::dateTimeConverter($item['finish_at']);
+                 ?>
+
             <?php if($item['priority'] != 'importante') continue;?>
             <?php if($item['status'] == 'concluido' || $item['status'] == 'andamento' ) continue;?>
             <div class="tasks" id="tasksImportante">
@@ -94,8 +105,8 @@ $tasks = $taskDao->select($user->id);
                             <a href="<?=$base;?>/task_delet.php?id=<?=$item['id'];?>"><img title="apagar" src="<?=$base;?>/assets/img/apagar.png"/></a>
                         </div>
                         <div class="taskDates">
-                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$item['creat_at'];?></p></div>
-                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$item['finish_at'];?></p></div>
+                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$dateC[0];?></p></div>
+                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$dateF[0];?></p></div>
                         </div> 
                     </div>
                 </div> 
@@ -108,8 +119,14 @@ $tasks = $taskDao->select($user->id);
         <div class="action" id="urgente"><h3>URGENTE</h3></div>
 
         <?php foreach ($tasks as $item):?>
-            <?php $creat_at = $item['creat_at'];
-                 $date = implode('/', array_reverse(explode('-', $creat_at)));?>
+            <?php 
+                //DATA DE CRIAÇÃO 
+                $dateC = Auth::dateTimeConverter($item['creat_at']);
+                //DATA DE CONCLUSÃO
+                $dateF = Auth::dateTimeConverter($item['finish_at']);
+                 ?>
+
+
             <?php if($item['priority'] != 'urgente') continue;?>
             <?php if($item['status'] == 'concluido' || $item['status'] == 'andamento' ) continue;?>
             <div class="tasks" id="tasksUrgente">
@@ -126,8 +143,8 @@ $tasks = $taskDao->select($user->id);
                             <a href="<?=$base;?>/task_delet.php?id=<?=$item['id'];?>"><img title="apagar" src="<?=$base;?>/assets/img/apagar.png"/></a>
                         </div>
                         <div class="taskDates">
-                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$item['creat_at'];?></p></div>
-                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$item['finish_at'];?></p></div>
+                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$dateC[0];?></p></div>
+                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$dateF[0];?></p></div>
                         </div> 
                     </div>
                 </div> 
@@ -141,13 +158,19 @@ $tasks = $taskDao->select($user->id);
         <div class="action" id="andamento"><h3>EM ANDAMENTO</h3></div>
 
         <?php foreach ($tasks as $item):?>
-            <?php $creat_at = $item['creat_at'];
-                 $date = implode('/', array_reverse(explode('-', $creat_at)));?>
+            <?php 
+                //DATA DE CRIAÇÃO 
+                $dateC = Auth::dateTimeConverter($item['creat_at']);
+                //DATA DE CONCLUSÃO
+                $dateF = Auth::dateTimeConverter($item['finish_at']);
+                 ?>
+
+
             <?php if($item['status'] != 'andamento') continue;?>
             <div class="tasks" id="tasksAndamento">
 
                 <div class="task">
-                        <h1 style="display: none;"><?=$item['id'];?></h1>
+                        <div class="priority"> <p>Prioridade:  <?=$item['priority'];?></p></div>
                         <h3><?=$item['title'];?></h3>
                         <p><?=$item['description'];?></p>
 
@@ -158,8 +181,8 @@ $tasks = $taskDao->select($user->id);
                             <a href="<?=$base;?>/task_delet.php?id=<?=$item['id'];?>"><img title="apagar" src="<?=$base;?>/assets/img/apagar.png"/></a>
                         </div>
                         <div class="taskDates">
-                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$item['creat_at'];?></p></div>
-                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$item['finish_at'];?></p></div>
+                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$dateC[0];?></p></div>
+                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$dateF[0];?></p></div>
                         </div> 
                     </div>
                 </div> 
@@ -173,13 +196,19 @@ $tasks = $taskDao->select($user->id);
         <div class="action" id="concluido"><h3>CONCLUIDO</h3></div>
 
         <?php foreach ($tasks as $item):?>
-            <?php $creat_at = $item['creat_at'];
-                 $date = implode('/', array_reverse(explode('-', $creat_at)));?>
+            <?php 
+                //DATA DE CRIAÇÃO 
+                $dateC = Auth::dateTimeConverter($item['creat_at']);
+                //DATA DE CONCLUSÃO
+                $dateF = Auth::dateTimeConverter($item['finish_at']);
+                 ?>
+
+
             <?php if($item['status'] != 'concluido') continue;?>
             <div class="tasks" id="tasksConcluido">
 
                 <div class="task">
-                        <h1 style="display: none;"><?=$item['id'];?></h1>
+                        <div class="priority"> <p>Prioridade:  <?=$item['priority'];?></p></div>
                         <h3><?=$item['title'];?></h3>
                         <p><?=$item['description'];?></p>
 
@@ -190,8 +219,8 @@ $tasks = $taskDao->select($user->id);
                             <a href="<?=$base;?>/task_delet.php?id=<?=$item['id'];?>"><img title="apagar" src="<?=$base;?>/assets/img/apagar.png"/></a>
                         </div>
                         <div class="taskDates">
-                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$item['creat_at'];?></p></div>
-                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$item['finish_at'];?></p></div>
+                            <div class="date" ><b>inicio:</b> <p id="dateStart"><?=$dateC[0];?></p></div>
+                            <div class="date" ><b>fim:_</b> <p id="dateDone"><?=$dateF[0];?></p></div>
                         </div> 
                     </div>
                 </div> 

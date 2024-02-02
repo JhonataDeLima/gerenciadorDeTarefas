@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+//FUSORARIO
+date_default_timezone_set('America/Sao_Paulo');
+
 //CONFIGURA O BASE DE ACORDO COM A PASTA DO SEU PROJETO
 $base = 'http://localhost/praticar/gerenciadorDeTarefas';
 
