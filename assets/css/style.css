@@ -28,17 +28,20 @@ body{
 }
 
 .container{
+    min-height: calc(100vh - 40px); /* Leva em consideração a altura do cabeçalho e do rodapé */
+    overflow: auto; /* Permite a rolagem do conteúdo caso exceda o tamanho da tela */
+
     margin-top:20px;
     display:flex;
     flex-direction:column;
     background-color:#383838;
-    height:100%;
     width:100%;
     text-align:center;
 }
 .welcome{
     text-align:left;
     margin-left:10px;
+    margin-bottom:10px;
 }
 .welcome img{
     width:50px;
